@@ -4,7 +4,6 @@ require 'rubygems'
 require 'bundler/setup'
 require 'dotenv/load'
 
-require 'byebug'
 require 'mail'
 require 'nokogiri'
 require 'open-uri'
