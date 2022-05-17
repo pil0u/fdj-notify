@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+ruby '3.1.2'
 
 gem 'dotenv', '~> 2.7.6'
 gem 'mail', '~> 2.7.1'
