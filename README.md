@@ -15,7 +15,7 @@ Use a `.env` file with these keys:
 - `MAILER_USER_NAME`, your Gmail email address
 - `MAILER_PASSWORD`, your [generated app password](https://myaccount.google.com/apppasswords) (select "Other" and choose any name you want)
 
-> :warn: You should never share your `MAILER_PASSWORD`.
+> **⚠️ You should never share your `MAILER_PASSWORD`, as it grants access to your entire Google Account.**
 
 ## Usage
 
@@ -27,4 +27,4 @@ bundle install # Install script requirements
 ruby run.rb
 ```
 
-Ideally, this command should be executed on a schedule (cron) every Tuesday and Friday 09:00 UTC.
+Ideally, this command should be executed on a schedule (cron) every Tuesday and Friday at 09:00 UTC.
