@@ -27,4 +27,35 @@ bundle install # Install script requirements
 ruby run.rb
 ```
 
-Ideally, this command should be executed on a schedule (cron) every Tuesday and Friday at 09:00 UTC.
+Ideally, this command should be executed on a schedule (cron) every Tuesday and Friday at 04:00AM UTC.
+
+## Deploy on Heroku
+
+This section required [`heroku-cli`](https://devcenter.heroku.com/articles/heroku-cli)
+
+``` sh
+heroku login
+heroku create --region=eu fdj-notify
+git push heroku main
+heroku config:set MAILER_USER_NAME=<your_gmail_address>
+heroku config:set MAILER_PASSWORD=<your_gmail_app_password>
+heroku config:set THRESHOLD=<your_prefered_minimum> # optional
+heroku config:set DRAW_DAYS=<your_prefered_draw_days> # optional
+```
+
+Trigger the script immediately with
+``` sh
+heroku run ruby run.rb
+```
+
+### Setup the Heroku Scheduler to trigger the script once a day
+
+``` sh
+heroku addons:create scheduler:standard
+heroku addons:open scheduler
+```
+
+This last command opens a web page, the Scheduler dashboard.
+1. Click on `Create a job`
+2. Choose an interval (I recommend `Every day at 04:00AM UTC`)
+3. Add the command `ruby run.rb`
