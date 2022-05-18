@@ -31,7 +31,7 @@ Ideally, this command should be executed on a schedule (cron) every Tuesday and 
 
 ## Deploy on Heroku
 
-This section required [`heroku-cli`](https://devcenter.heroku.com/articles/heroku-cli)
+This section requires [`heroku-cli`](https://devcenter.heroku.com/articles/heroku-cli)
 
 ``` sh
 heroku login
