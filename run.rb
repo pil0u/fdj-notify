@@ -11,15 +11,12 @@ require 'open-uri'
 threshold = (ENV['THRESHOLD'] || 17).to_i
 draw_days = (ENV['DRAW_DAYS'] || 'mardi,vendredi')
 
-base_url = 'https://www.fdj.fr/jeux-de-tirage/euromillions-my-million'
+base_url = 'https://www.fdj.fr/jeux-de-tirage/euromillions-my-million/resultats'
 response = URI.parse(base_url).read
 html = Nokogiri::HTML(response)
 
-amount = html.css('.banner-euromillions_text-gain_num > text()').text.strip.to_i
-
-# TODO: unreliable when the draw is ongoing (we get "Tous les mardis et vendredis")
-next_draw = html.css('.banner-euromillions_text-date').text.strip
-next_draw_day = next_draw.split[0]
+amount = html.css('.result-full__announce-gainNum').text.strip.to_i
+next_draw_day = html.css('.result-full__announce-date').text.downcase.split.first
 
 return unless amount >= threshold && draw_days.split(',').include?(next_draw_day)
 
