@@ -18,7 +18,12 @@ html = Nokogiri::HTML(response)
 amount = html.css('.result-full__announce-gainNum').text.strip.to_i
 next_draw_day = html.css('.result-full__announce-date').text.downcase.split.first
 
+puts "#{amount}M€ (vs #{threshold}M€)"
+puts "#{next_draw_day} (vs #{draw_days})"
+
 return unless amount >= threshold && draw_days.split(',').include?(next_draw_day)
+
+print "Sending email to #{ENV['MAILER_USER_NAME']}... "
 
 options = {
   address: 'smtp.gmail.com',
@@ -40,3 +45,5 @@ mail = Mail.new do
 end
 
 mail.deliver!
+
+puts '✓'
