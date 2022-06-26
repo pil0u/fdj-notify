@@ -11,6 +11,9 @@ require 'open-uri'
 threshold = (ENV['THRESHOLD'] || 17).to_i
 draw_days = (ENV['DRAW_DAYS'] || 'mardi,vendredi')
 
+# Stop the script if today is not a desired draw day
+return unless draw_days.split(',').include?({ 2 => 'mardi', 5 => 'vendredi' }[Time.now.wday])
+
 base_url = 'https://www.fdj.fr/jeux-de-tirage/euromillions-my-million/resultats'
 response = URI.parse(base_url).read
 html = Nokogiri::HTML(response)
@@ -21,7 +24,7 @@ next_draw_day = html.css('.result-full__announce-date').text.downcase.split.firs
 puts "#{amount}M€ (vs #{threshold}M€)"
 puts "#{next_draw_day} (vs #{draw_days})"
 
-return unless amount >= threshold && draw_days.split(',').include?(next_draw_day)
+return unless amount >= threshold
 
 print "Sending email to #{ENV['MAILER_USER_NAME']}... "
 
