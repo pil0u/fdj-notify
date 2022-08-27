@@ -10,7 +10,15 @@ require 'open-uri'
 
 threshold = (ENV['THRESHOLD'] || 17).to_i
 draw_days = (ENV['DRAW_DAYS'] || 'mardi,vendredi').split(',')
-today = { 2 => 'mardi', 5 => 'vendredi' }[Time.now.wday]
+today = {
+  1 => 'lundi',
+  2 => 'mardi',
+  3 => 'mercredi',
+  4 => 'jeudi',
+  5 => 'vendredi',
+  6 => 'samedi',
+  7 => 'dimanche'
+}[Time.now.wday]
 
 print 'Is today a desired draw day? '
 if draw_days.include? today
