@@ -4,7 +4,7 @@ Auto-send yourself an email when a EuroMillions draw matches your criteria.
 
 ## Requirements
 
-- Ruby 3.1.2
+- Ruby 3.2.2
 - Bundler
 
 ## Configuration
