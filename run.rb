@@ -17,7 +17,7 @@ today = {
   4 => 'jeudi',
   5 => 'vendredi',
   6 => 'samedi',
-  7 => 'dimanche'
+  0 => 'dimanche'
 }[Time.now.wday]
 
 print 'Is today a desired draw day? '
