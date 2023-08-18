@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby file: '.ruby-version'
+# ruby file: '.ruby-version'
+ruby File.read('.ruby-version').strip # Heroku compatible
 
 gem 'dotenv', '~> 2.8.1'
 gem 'mail', '~> 2.8.1'
