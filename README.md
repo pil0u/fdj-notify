@@ -1,3 +1,5 @@
+# As of 2024-04-30, this repo is archived
+
 # fdj-notify
 
 Auto-send yourself an email when a EuroMillions draw matches your criteria.
